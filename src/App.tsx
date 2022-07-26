@@ -10,6 +10,18 @@ const [emails, setEmails] = useState(initialEmails)
 
 window.emails=emails
 
+function toggleRead(email){
+  const emailsCopy = structuredClone(emails)
+
+  const targetTodo = emailsCopy.find(target => target.id === email.id)
+    targetTodo.read = !targetTodo.read
+
+    setEmails(emailsCopy)
+
+}
+
+
+
   return (
     <div className="app">
       <Header />
@@ -44,13 +56,16 @@ window.emails=emails
       <main className="emails">
         {
          <nav>
-            <ul>
+            <ul className='emails-list'>
               {emails.map(email=> (
-                <li>
-                 <span className="email.sender"><input type='checkbox'></input></span>
-                 <span className="email.sender"> ☆ </span>
+                <li className={email.read ? 'read' : 'unread'}>
+                 <span className="email.checkbox"><input type='checkbox' onClick={() =>
+                toggleRead(email)
+                }>
+                  </input></span>
+                 <span className="email.star"> ☆ </span>
                  <span className="email.sender">{email.sender}</span>
-                 <span className="email.title">{email.title}</span>
+                 <span className="title">{email.title}</span>
                 </li>
               ))}
             </ul>

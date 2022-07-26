@@ -111,10 +111,18 @@
   padding: 10px;
 }
 
-.title{
-  width:100vh;
-}
-
 .email-details{
   padding:5px;
+}
+
+.starred{
+  font-size: large;
+  background-color: yellow;
+  border: none;
+}
+
+.unstarred{
+  font-size: large;
+  border: none;
+  background-color: transparent;
 }

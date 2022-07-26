@@ -1,33 +1,32 @@
-import Header from './components/Header'
+import Header from "./components/Header";
 
-import initialEmails from './data/emails'
+import initialEmails from "./data/emails";
 
-import './App.css'
-import { useState } from 'react'
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-const [emails, setEmails] = useState(initialEmails)
+  const [emails, setEmails] = useState(initialEmails);
 
-window.emails=emails
+  window.emails = emails;
 
-function toggleRead(email){
-  const emailsCopy = structuredClone(emails)
+  function toggleRead(email) {
+    const emailsCopy = structuredClone(emails);
 
-  const targetEmail = emailsCopy.find(target => target.id === email.id)
-    targetEmail.read= !targetEmail.read
+    const targetEmail = emailsCopy.find((target) => target.id === email.id);
+    targetEmail.read = !targetEmail.read;
 
-    setEmails(emailsCopy)
+    setEmails(emailsCopy);
+  }
 
-}
+  function toggleStarred(email) {
+    const emailsCopy = structuredClone(emails);
 
-function toggleStarred(email){
-  const emailsCopy = structuredClone(emails)
+    const targetEmail = emailsCopy.find((target) => target.id === email.id);
+    targetEmail.starred = !targetEmail.starred;
 
-  const targetEmail = emailsCopy.find(target => target.id === email.id)
-    targetEmail.starred = !targetEmail.starred
-
-    setEmails(emailsCopy)
-}
+    setEmails(emailsCopy);
+  }
 
   return (
     <div className="app">
@@ -36,14 +35,14 @@ function toggleStarred(email){
         <ul className="inbox-list">
           <li
             className="item active"
-          // onClick={() => {}}
+            // onClick={() => {}}
           >
             <span className="label">Inbox</span>
             <span className="count">?</span>
           </li>
           <li
             className="item"
-          // onClick={() => {}}
+            // onClick={() => {}}
           >
             <span className="label">Starred</span>
             <span className="count">?</span>
@@ -55,37 +54,42 @@ function toggleStarred(email){
               id="hide-read"
               type="checkbox"
               checked={false}
-            // onChange={() => {}}
+              // onChange={() => {}}
             />
           </li>
         </ul>
       </nav>
       <main className="emails">
         {
-         <nav>
-            <ul className='emails-list'>
-              {emails.map(email=> (
-                <li className={email.read ? 'read' : 'unread'}>
-                 <span className="email-details"><input type='checkbox' onClick={() =>
-                toggleRead(email)
-                }>
-                  </input></span>
-                 <span className="email-details">
-                  <button onClick={()=>
-                  toggleStarred(email)
-                  }>
-                  ☆
-                  </button>
+          <nav>
+            <ul className="emails-list">
+
+              {emails.map((email) => (
+                <li className={email.read ? "read" : "unread"}>
+
+                  <span className="email-details">
+                    <input
+                      type="checkbox"
+                      onClick={() => toggleRead(email)}
+                    ></input>
                   </span>
-                 <span className="email-details">{email.sender}</span>
-                 <span className="title">{email.title}</span>
+
+                  <span className="email-details">
+                    <button className={email.starred ? "starred" : "unstarred"} 
+                    onClick={() => toggleStarred(email)}>☆</button>
+                  </span>
+
+                  <span className="email-details">{email.sender}</span>
+                  <span className="email-details">{email.title}</span>
                 </li>
               ))}
+
             </ul>
-           </nav>
-        }</main>
+          </nav>
+        }
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

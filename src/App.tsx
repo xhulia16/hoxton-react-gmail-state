@@ -13,14 +13,21 @@ window.emails=emails
 function toggleRead(email){
   const emailsCopy = structuredClone(emails)
 
-  const targetTodo = emailsCopy.find(target => target.id === email.id)
-    targetTodo.read = !targetTodo.read
+  const targetEmail = emailsCopy.find(target => target.id === email.id)
+    targetEmail.read= !targetEmail.read
 
     setEmails(emailsCopy)
 
 }
 
+function toggleStarred(email){
+  const emailsCopy = structuredClone(emails)
 
+  const targetEmail = emailsCopy.find(target => target.id === email.id)
+    targetEmail.starred = !targetEmail.starred
+
+    setEmails(emailsCopy)
+}
 
   return (
     <div className="app">
@@ -63,7 +70,13 @@ function toggleRead(email){
                 toggleRead(email)
                 }>
                   </input></span>
-                 <span className="email.star"> ☆ </span>
+                 <span className="email.star">
+                  <button onClick={()=>
+                  toggleStarred(email)
+                  }>
+                  ☆
+                  </button>
+                  </span>
                  <span className="email.sender">{email.sender}</span>
                  <span className="title">{email.title}</span>
                 </li>

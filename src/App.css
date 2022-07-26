@@ -111,8 +111,11 @@
 }
 
 .emails-list{
+  display:grid;
   list-style:none;
-  padding:5px;
-  width:100vh;
+  padding: 10px;
 }
 
+.title{
+  width:100vh;
+}

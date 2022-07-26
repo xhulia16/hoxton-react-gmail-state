@@ -66,18 +66,18 @@ function toggleStarred(email){
             <ul className='emails-list'>
               {emails.map(email=> (
                 <li className={email.read ? 'read' : 'unread'}>
-                 <span className="email.checkbox"><input type='checkbox' onClick={() =>
+                 <span className="email-details"><input type='checkbox' onClick={() =>
                 toggleRead(email)
                 }>
                   </input></span>
-                 <span className="email.star">
+                 <span className="email-details">
                   <button onClick={()=>
                   toggleStarred(email)
                   }>
                   ☆
                   </button>
                   </span>
-                 <span className="email.sender">{email.sender}</span>
+                 <span className="email-details">{email.sender}</span>
                  <span className="title">{email.title}</span>
                 </li>
               ))}

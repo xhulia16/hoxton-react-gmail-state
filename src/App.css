@@ -48,15 +48,6 @@
   background-color: transparent;
 }
 
-.email {
-  display: grid;
-  grid-template-columns: 30px 30px 150px 1fr;
-  padding: 10px;
-  background-color: white;
-  font-size: 0.9rem;
-
-  border-bottom: solid 1px #00000020;
-}
 
 .email:first-child {
   border-top: solid 1px #00000020;
@@ -69,10 +60,14 @@
 
 .read {
   background-color: rgb(240, 240, 240);
+  padding:10px;
+  border-bottom: solid 1px #00000020;
 }
 
 .unread {
   font-weight: 600;
+  padding:10px;
+  border-bottom: solid 1px #00000020;
 }
 
 .email .title {
@@ -118,4 +113,8 @@
 
 .title{
   width:100vh;
+}
+
+.email-details{
+  padding:5px;
 }
